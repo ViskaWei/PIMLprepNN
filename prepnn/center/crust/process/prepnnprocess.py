@@ -8,8 +8,6 @@ from ..operation.prepnnoperation import BasePrepNNOperation,\
 from base.center.crust.baseprocess import BaseProcess
 
 
-
-
 class PrepNNProcess(BaseProcess):
     def __init__(self) -> None:
         self.operation_list: list[BasePrepNNOperation] = None
@@ -19,9 +17,6 @@ class PrepNNProcess(BaseProcess):
         for operation in self.operation_list:
             operation.perform_on_PrepNN(NNP)
                 
-
-    
-
 class StellarPrepNNProcess(PrepNNProcess):
 
     def set_process(self, PARAMS, MODEL, DATA):

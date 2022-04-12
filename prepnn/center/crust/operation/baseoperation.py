@@ -13,9 +13,8 @@ class LabelPrepOperation(BaseOperation):
         return train_label, test_label
         
 class DataPrepOperation(BaseOperation):
-    def perform(self, label, rescaler, interpolator, noiser):
-        coordx = rescaler(label)
-        data  = interpolator(coordx)
+    def perform(self, unit_coord, interpolator, noiser):
+        data  = interpolator(unit_coord)
         sigma = noiser(data)
         return data, sigma
 

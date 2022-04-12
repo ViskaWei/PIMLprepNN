@@ -19,14 +19,15 @@ class LabelSamplerPrepNNOperation(LabelSamplerOperation, BasePrepNNOperation):
 class LabelPrepNNOperation(LabelPrepOperation, BasePrepNNOperation):
     def perform_on_PrepNN(self, NNP: PrepNN): 
         NNP.ntrain = self.ntrain
-        NNP.ntest = self.ntest
-        NNP.seed = self.seed
+        NNP.ntest  = self.ntest
+        NNP.seed   = self.seed
         NNP.train["label"], NNP.test["label"] = self.perform(NNP.sampler["uniform"], NNP.sampler["halton"])
 
 class DataPrepNNOperation(DataPrepOperation, BasePrepNNOperation):
     def perform_on_PrepNN(self, NNP: PrepNN): 
-        label = np.vstack((NNP.train["label"], NNP.test["label"]))
-        data, sigma = self.perform(label, NNP.label_rescaler, NNP.interpolator, NNP.noiser)
+        label       = np.vstack((NNP.train["label"], NNP.test["label"]))
+        data, sigma = self.perform(label, NNP.interpolator, NNP.noiser)
+
         NNP.train["data"] , NNP.test["data"]  = data [:NNP.ntrain], data [NNP.ntrain:]
         NNP.train["sigma"], NNP.test["sigma"] = sigma[:NNP.ntrain], sigma[NNP.ntrain:]
 

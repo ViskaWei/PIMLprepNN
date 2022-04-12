@@ -17,11 +17,10 @@ class PrepNN(BasePrepNN):
         return self.dim
 
 class StellarPrepNN(PrepNN):
-    def __init__(self, interpolator, noiser, label_rescaler, dim):
+    def __init__(self, interpolator, noiser, dim):
         PrepNN.__init__(self)
         
         self.interpolator   = interpolator
         self.noiser         = noiser
-        self.label_rescaler = label_rescaler
         self.dim            = dim
         self.sampler        = {}
