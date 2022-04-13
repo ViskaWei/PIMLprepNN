@@ -13,6 +13,7 @@ class BasePrepNNOperation(BaseOperation):
 
 class LabelSamplerPrepNNOperation(LabelSamplerOperation, BasePrepNNOperation):
     def perform_on_PrepNN(self, NNP: PrepNN): 
+        NNP.sampler = {}
         for method in ["halton", "uniform"]:
             NNP.sampler[method] = self.perform(NNP.dim, method)
 
@@ -21,6 +22,7 @@ class LabelPrepNNOperation(LabelPrepOperation, BasePrepNNOperation):
         NNP.ntrain = self.ntrain
         NNP.ntest  = self.ntest
         NNP.seed   = self.seed
+        
         NNP.train["label"], NNP.test["label"] = self.perform(NNP.sampler["uniform"], NNP.sampler["halton"])
 
 class DataPrepNNOperation(DataPrepOperation, BasePrepNNOperation):

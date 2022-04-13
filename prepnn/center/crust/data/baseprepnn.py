@@ -23,4 +23,3 @@ class StellarPrepNN(PrepNN):
         self.interpolator   = interpolator
         self.noiser         = noiser
         self.dim            = dim
-        self.sampler        = {}
