@@ -21,11 +21,3 @@ class StellarPrepNNProcessIF(PrepNNProcessIF):
 
     def interact_on_Object(self, NNP: StellarPrepNN):
         super().interact_on_Object(NNP)
-
-    def finish(self, ext=".h5"):
-        self.store_NN_preped(self.Object.train, self.Object.train_name, ext)
-        self.store_NN_preped(self.Object.test,  self.Object.test_name,  ext)
-        
-    def store_NN_preped(self, data, name, ext):
-        self.store.set_dir(self.OP_OUT["path"], store_name, ext)
-        self.store.store_dict_args(data)

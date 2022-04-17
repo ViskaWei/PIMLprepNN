@@ -10,7 +10,7 @@ class StellarPrepNNParamIF(ParamIF):
 
         self.INTERP_PATH = self.get_arg("INTERP_PATH", PARAM, Constants.INTERP_PATH)
         self.dim         = self.get_arg("dim", PARAM, 5)
-
+        self.set_out(PARAM)
         self.set_param_dict()
 
     def set_param_dict(self):
