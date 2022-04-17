@@ -23,3 +23,14 @@ class StellarPrepNNParamIF(ParamIF):
             "ntest" : self.ntest,
             "seed"  : self.seed
         }
+
+    def set_out(self, PARAM):
+        self.name = self.get_arg("name", PARAM, "bosz_prepnn")
+        self.dir = self.get_arg("dir", PARAM, Constants.STELLAR_PREPNN_DIR)
+        out = {
+            "name": self.name,
+            "dir" : self.dir
+        }
+        self.OUT = out
+
+        
